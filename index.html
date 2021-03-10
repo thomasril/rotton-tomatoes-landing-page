@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Rotton Tomatoes</title>
+  </head>
+
+  <link
+    href="https://fonts.googleapis.com/css?family=Quicksand:400,500,700"
+    rel="stylesheet"
+  />
+
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+    crossorigin="anonymous"
+  />
+
+  <link rel="icon" href="Assets/Icon.png" type="image/x-icon" />
+  <style type="text/css">
+    /* width */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px grey;
+      border-radius: 50px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: rgb(133, 133, 133);
+      border-radius: 50px;
+    }
+
+    html,
+    body {
+      margin: 0px;
+      padding: 0px;
+      font-family: "Quicksand", sans-serif;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    #navbar {
+      padding: 30px;
+      position: absolute;
+      display: flex;
+      width: 100%;
+      z-index: 100;
+    }
+
+    #navbar ul li {
+      display: inline-block;
+      list-style-type: none;
+      padding-right: 30px;
+      font-weight: 500;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    #navbar ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    #navbar-logo {
+      width: 10%;
+      height: 100px;
+      display: inline-block;
+      background-image: url("Assets/Logo.png");
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+
+    div[id*="header-image"]{
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100vmin;
+        display: none;
+    }
+
+    #header-image-1{
+      display: block;
+      /* z-index: -1; */
+    }
+
+    div:target {
+      display: block;
+      animation: fadein 1s;
+    }
+
+    .movie-title {
+      position: absolute;
+      top: 40%;
+      left: 5%;
+      font-size: 120px;
+      font-weight: 400;
+      color: white;
+    }
+
+    .year {
+      font-size: 40px;
+    }
+
+    .tomatometer,
+    .audience {
+      position: absolute;
+      top: 60%;
+      left: 5%;
+      font-size: 40px;
+      font-weight: 400;
+      color: white;
+    }
+
+    .audience {
+      left: 30%;
+    }
+
+    .score {
+      text-align: center;
+      font-size: 80px;
+      font-weight: 700;
+    }
+
+    .percent {
+      font-size: 40px;
+      vertical-align: 40%;
+    }
+
+    #header-image-1 {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        url("Assets/Header_Poster_1.jpg");
+    }
+
+    #header-image-2 {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        url("Assets/Header_Poster_2.jpg");
+    }
+
+    #header-image-3 {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        url("Assets/Header_Poster_3.jpg");
+    }
+
+    #header-image-4 {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        url("Assets/Header_Poster_4.jpg");
+    }
+
+    #header-image-5 {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        url("Assets/Header_Poster_5.jpg");
+    }
+
+    .progress {
+      position: absolute;
+      top: 85%;
+      left: 5%;
+      padding: 4px;
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 6px;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25),
+        0 1px rgba(255, 255, 255, 0.08);
+      width: 45%;
+    }
+
+    .progress-bar {
+      height: 10px;
+      border-radius: 4px;
+      background-image: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.05)
+      );
+      transition: 0.4s linear;
+      transition-property: width, background-color;
+      box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25),
+        inset 0 1px rgba(255, 255, 255, 0.1);
+    }
+
+    @keyframes progress-1 {
+      from {
+        width: 0;
+      }
+      to {
+        width: 84%;
+      }
+    }
+
+    @keyframes progress-2 {
+      from {
+        width: 0;
+      }
+      to {
+        width: 67%;
+      }
+    }
+
+    @keyframes progress-3 {
+      from {
+        width: 0;
+      }
+      to {
+        width: 85%;
+      }
+    }
+
+    @keyframes progress-4 {
+      from {
+        width: 0;
+      }
+      to {
+        width: 71%;
+      }
+    }
+
+    @keyframes progress-5 {
+      from {
+        width: 0;
+      }
+      to {
+        width: 95%;
+      }
+    }
+
+    #header-image-1 .progress .progress-bar {
+      width: 84%;
+      background-color: #b70909;
+      animation: progress-1 1s ease-in-out forwards;
+    }
+
+    #header-image-2 .progress .progress-bar {
+      width: 67%;
+      background-color: #e27612;
+      animation: progress-2 1s ease-in-out forwards;
+    }
+
+    #header-image-3 .progress .progress-bar {
+      width: 85%;
+      background-color: #e8f51b;
+      animation: progress-3 1s ease-in-out forwards;
+    }
+
+    #header-image-4 .progress .progress-bar {
+      width: 71%;
+      background-color: #0382a3;
+      animation: progress-4 1s ease-in-out forwards;
+    }
+
+    #header-image-5 .progress .progress-bar {
+      width: 95%;
+      background-color: #911919;
+      animation: progress-5 1s ease-in-out forwards;
+    }
+
+    #header-navigation {
+      position: absolute;
+      top: 30%;
+      right: 2%;
+      float: right;
+    }
+
+    @keyframes fadein {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    #header-navigation ul a li {
+      list-style-type: none;
+      margin: 20px;
+      padding: 10px;
+      width: 30px;
+      text-align: center;
+    }
+
+    #header-navigation ul a li:hover {
+      background-color: #ffffff8c;
+      border-radius: 50%;
+
+      animation: fadein 1s;
+    }
+
+    #header-navigation ul a {
+      color: white;
+      text-decoration: none;
+      font-size: 24px;
+    }
+
+    /* news-content CSS Section */
+
+    #news-content {
+      margin: 20px;
+      margin-top: 5%;
+    }
+
+    #table-top {
+      width: 100%;
+    }
+
+    .top-title {
+      border-left: 5px solid #b00e23;
+      padding: 10px;
+      font-size: 22px;
+      font-weight: 700;
+      width: 80%;
+      text-align: left;
+    }
+
+    .top-detail {
+      color: #b00e23;
+      cursor: pointer;
+    }
+
+    .top-icon {
+      padding-left: 15px;
+      padding-right: 10px;
+      width: 15px;
+    }
+
+    .top-score {
+      width: 25%;
+    }
+
+    .top-movie,
+    .top-total {
+      padding: 5px;
+      margin-top: 10px;
+    }
+
+  	#certified-content {
+     	background-color: #b00e23;
+    	margin-top: 5%;
+    	padding: 3% 20px;
+    	transform: skewY(-2deg);
+    	color: white;
+  	}
+
+  	#certified-title, 
+  	#certified-view-all, 
+  	#certified-meaning,
+  	#certified-list {
+  		transform: skewY(2deg);
+  	}
+
+    #certified-title {
+      border-left: 5px solid white;
+      padding: 10px;
+      font-size: 22px;
+      font-weight: 700;
+      width: 95%;
+      text-align: left;
+      display: inline-block;
+    }
+
+    #certified-view-all {
+      float: right;
+    }
+
+    #certified-meaning {
+      width: 30%;
+      padding: 10px;
+      margin: 10px;
+      display: inline-block;
+    }
+
+     #certified-image {
+      background-size: 100%;
+      background-repeat: no-repeat;
+      width: 60%;
+      height: 250px;
+      margin: auto;
+      background-image: url("Assets/Certified_Fresh.png");
+    }
+
+    #certified-desc {
+      text-align: justify;
+    }
+
+    #certified-list {
+      display: inline-block;
+      padding: 10px;
+      vertical-align: top;
+    }
+
+    .certified-movie {
+      display: inline-block;
+      text-align: center;
+      margin: 10px;
+      margin-right: 20px;
+    }
+
+    .movie-location {
+      margin-bottom:10px;
+    }
+
+    div[id*="movie-image"] {
+      background-size: 100%;
+      background-repeat: no-repeat;
+      width: 162px;
+      height: 240px;
+      margin: auto;
+    }
+
+    #movie-image-1 {
+      background-image: url("Assets/Certified_Fresh_1.jpg");
+    }
+
+    #movie-image-2 {
+      background-image: url("Assets/Certified_Fresh_2.jpg");
+    }
+
+    #movie-image-3 {
+      background-image: url("Assets/Certified_Fresh_3.jpg");
+    }
+
+    #movie-image-4 {
+      background-image: url("Assets/Certified_Fresh_4.jpg");
+    }
+
+    .movie-rating {
+      margin-top: 10px;
+    }
+
+    .movie-name {
+      margin-top: 10px;
+    }
+
+    #email-content {
+      position: relative;
+      margin: 20px;
+      margin-top: 5%;
+      height: 300px;
+    }
+
+    #email-box {
+      margin-top: 20px;
+      padding-top: 40px;
+      width: 40%;
+      border-radius: 10px;
+      margin: auto;
+      background-color: rgba(176,14,35,0.9);
+      position: relative;
+      text-align: center;
+      height: 150px;
+      z-index: 100;
+      box-shadow: 5px 5px rgba(136, 136, 136, 0.5);
+    }
+
+    #email-desc {
+      color: white;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 30px;
+    }
+
+    #email-textbox {
+      background: #fff;
+      color: black;
+      font: inherit;
+      box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+      border: 0;
+      outline: 0;
+      width:300px;
+      height: 30px;
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+    #email-button {
+      color: white;
+      font: inherit;
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, #a90329 0%,#8f0222 44%,#6d0019 100%);
+      box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+
+      height: 40px;
+      padding: 10px;
+      outline: 0;
+      border-radius: 5px;
+      margin: -5px;
+      width: 100px;
+    }
+
+    #email-button:hover {
+       background-position: right center;
+    }
+
+    #email-image {
+      position: absolute;
+      top: 5%;
+      width: 50%;
+      z-index: 10;
+      left: 10%;
+    }
+
+    /* Footer CSS Section */
+
+    #footer {
+      background-color: #333333;
+    }
+
+  	i[class*="fa"] {
+  		margin: 10px;
+    }
+
+    .footer-content, .footer-copyright {
+      display: inline-block;
+      width: 23%;
+      color: white;
+      height: auto;
+      vertical-align: top;
+      text-align: center;
+    }
+
+  	.footer-copyright {
+  		width: 100%;
+  		display: block;
+  	}
+
+    .footer-content ul li {
+      list-style-type: none;
+      text-align: left;
+      padding-top: 10px;
+      font-weight: bold;
+    }
+
+	.footer-text {
+		font-size: 12px;
+  }
+  .image-slider div{
+    position: absolute;
+  }
+  .image-slider{
+    height: 100vh;
+    width: 100%;
+  }
+  
+  </style>
+
+  <body onload="load()">
+    <div id="header">
+        <div id="navbar">
+          <div id="navbar-logo"></div>
+          <ul>
+            <li><a href = "#header-image-1">Movies & DVDs</a></li>
+            <li><a href = "#news-content">News</a></li>
+            <li><a href = "#certified-content">Certified Picks</a></li>
+            <li><a href = "#email-content">Be a Member</a></li>
+          </ul>
+        </div>
+  
+        <div id="image-slider" class="image-slider">
+          <div id="header-image-1">
+            <img src="" />
+            <div class="movie-title">
+              Deadpool 2<span class="year"> (2018)</span>
+            </div>
+            <div class="tomatometer">
+              Tomatometer
+              <div class="score">83<span class="percent">%</span></div>
+            </div>
+            <div class="audience">
+              Audience Score
+              <div class="score">85<span class="percent">%</span></div>
+            </div>
+  
+            <div class="progress"><div class="progress-bar"></div></div>
+          </div>
+          <div id="header-image-2">
+            <div class="movie-title">
+              Solo:<span class="year">A Star Wars Story (2018)</span>
+            </div>
+            <div class="tomatometer">
+              Tomatometer
+              <div class="score">70<span class="percent">%</span></div>
+            </div>
+            <div class="audience">
+              Audience Score
+              <div class="score">64<span class="percent">%</span></div>
+            </div>
+  
+            <div class="progress"><div class="progress-bar"></div></div>
+          </div>
+          <div id="header-image-3">
+            <div class="movie-title">
+              A Star is Born<span class="year"> (2018)</span>
+            </div>
+            <div class="tomatometer">
+              Tomatometer
+              <div class="score">90<span class="percent">%</span></div>
+            </div>
+            <div class="audience">
+              Audience Score
+              <div class="score">81<span class="percent">%</span></div>
+            </div>
+  
+            <div class="progress"><div class="progress-bar"></div></div>
+          </div>
+          <div id="header-image-4">
+            <div class="movie-title">
+              Aquaman<span class="year"> (2018)</span>
+            </div>
+            <div class="tomatometer">
+              Tomatometer
+              <div class="score">64<span class="percent">%</span></div>
+            </div>
+            <div class="audience">
+              Audience Score
+              <div class="score">79<span class="percent">%</span></div>
+            </div>
+  
+            <div class="progress"><div class="progress-bar"></div></div>
+          </div>
+          <div id="header-image-5">
+            <div class="movie-title">
+              Spiderman:<span class="year">Into The Spider-Verse (2018)</span>
+            </div>
+            <div class="tomatometer">
+              Tomatometer
+              <div class="score">97<span class="percent">%</span></div>
+            </div>
+            <div class="audience">
+              Audience Score
+              <div class="score">94<span class="percent">%</span></div>
+            </div>
+  
+            <div class="progress"><div class="progress-bar"></div></div>
+          </div>
+        </div>
+  
+        <div id="header-navigation">
+          <ul>
+            <a href="#header-image-1"><li>1</li></a>
+            <a href="#header-image-2"><li>2</li></a>
+            <a href="#header-image-3"><li>3</li></a>
+            <a href="#header-image-4"><li>4</li></a>
+            <a href="#header-image-5"><li>5</li></a>
+          </ul>
+        </div>
+      </div>
+  
+      <div id="news-content">
+        <table>
+          <tr>
+            <td rowspan="3" width="70%">
+              <table id="table-highlight">
+                <tr>
+                  <td><img src="Assets/Content_Poster_1.jpg" width="85%" /></td>
+                  <td><img src="Assets/Content_Poster_2.jpg" width="85%" /></td>
+                </tr>
+                <tr>
+                  <td style="width: 40%">
+                    7th of December, 2018 in <b>Trailers</b>
+                  </td>
+                  <td style="width: 40%">
+                    18th of October, 2018 in <b>Awards</b>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <h3>
+                      <i
+                        >5 Things We Learned From The AVENGERS: ENDGAME Trailer</i
+                      >
+                    </h3>
+                  </td>
+                  <td>
+                    <h3>
+                      <i>Six Upcoming Movies Set To Shake Up <br/>Awards Season</i>
+                    </h3>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Tony's lost in space, Clint Level up, and more<br/> revelations..
+                  </td>
+                  <td>
+                    <p>
+                      Think the frontrunners are a lock? Freddie Mercury, A <br/>
+                      Scottish Queen and a certain flying nanny beg to differ.
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><img src="Assets/Content_Poster_3.jpg" width="85%" /></td>
+                  <td><img src="Assets/Content_Poster_4.jpg" width="85%" /></td>
+                </tr>
+                <tr>
+                  <td>14th of December, 2018 in News</td>
+                  <td>4th of December, 2018 in TV</td>
+                </tr>
+                <tr>
+                  <td>
+                    <h3>
+                      <i style = "text-align: justify"
+                        >The Mary Poppins Returns Cast Watched <br/> Bizarre Christmas
+                        Movies Growing Up</i
+                      >
+                    </h3>
+                  </td>
+                  <td>
+                    <h3>
+                      <i
+                        >Stars Grant Gustin, Candice Patton, and <br/> More Reflect on
+                        100 Episodes</i
+                      >
+                    </h3>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Plus, Emily Blunt talks about her big yerar in bathtubs, <br/> and
+                    lin-manuel miranda explains why the little <br/> mermaid is so
+                    important to him.
+                  </td>
+                  <td>
+                    Ahead of the series' landmark 100th episode, the cast <br/> 
+                    of the CW superhero hit reflect on their most <br/>
+                    memorable moments from the show.
+                  </td>
+                </tr>
+              </table>
+            </td>
+  
+            <td width="29%" height="33%">
+              <table id="table-top">
+                <thead>
+                  <tr>
+                    <th colspan=" 3" class="top-title">Top Box Office</th>
+                    <th class="top-detail">View All</th>
+                  </tr>
+                </thead>
+  
+                <tbody>
+                  <tr>
+                    <td rowspan="2" class="top-score">
+                      <img src="Assets/Icon_Bad.png" class="top-icon" /><b>50%</b>
+                    </td>
+                    <td class="top-movie"><b>Equalizer 2</b></td>
+                  </tr>
+                  <tr>
+                    <td class="top-total">$36.1 Million</td>
+                  </tr>
+  
+                  <tr>
+                    <td rowspan="2" class="top-score">
+                      <img src="Assets/Icon_Good.png" class="top-icon" /><b
+                        >81%</b
+                      >
+                    </td>
+                    <td class="top-movie"><b>Christopher Robin</b></td>
+                  </tr>
+                  <tr>
+                    <td class="top-total">$35.1 Million</td>
+                  </tr>
+  
+                  <tr>
+                    <td rowspan="2" class="top-score">
+                      <img src="Assets/Icon_Good.png" class="top-icon" /><b
+                        >87%</b
+                      >
+                    </td>
+                    <td class="top-movie"><b>Ant-Man and The Wasp</b></td>
+                  </tr>
+                  <tr>
+                    <td class="top-total">$23.9 Million</td>
+                  </tr>
+  
+                  <tr>
+                    <td rowspan="2" class="top-score">
+                      <img src="Assets/Icon_Good.png" class="top-icon" /><b
+                        >77%</b
+                      >
+                    </td>
+                    <td class="top-movie"><b>Escape Room</b></td>
+                  </tr>
+                  <tr>
+                    <td class="top-total">$10.2 Million</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="2" class="top-score">
+                      <img src="Assets/Icon_Certified.png" class="top-icon" /><b
+                        >97%</b
+                      >
+                    </td>
+                    <td class="top-movie"><b>Incredibles 2</b></td>
+                  </tr>
+                  <tr>
+                    <td class="top-total">$12.6 Million</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="2" class="top-score">
+                      <img src="Assets/Icon_Good.png" class="top-icon" /><b
+                        >78%</b
+                      >
+                    </td>
+                    <td class="top-movie"><b>Mary Poppins Return</b></td>
+                  </tr>
+                  <tr>
+                    <td class="top-total">$33.4 Million</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="2" class="top-score">
+                      <img src="Assets/Icon_Certified.png" class="top-icon" /><b
+                        >92%</b
+                      >
+                    </td>
+                    <td class="top-movie"><b>Bumblebee</b></td>
+                  </tr>
+                  <tr>
+                    <td class="top-total">$98.2 Million</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="2" class="top-score">
+                      <img src="Assets/Icon_Good.png" class="top-icon" /><b
+                        >62%</b
+                      >
+                    </td>
+                    <td class="top-movie"><b>Bohemian Rhapsody</b></td>
+                  </tr>
+                  <tr>
+                    <td class="top-total">$28.5 Million</td>
+                  </tr>
+  
+                  <tr>
+                    <td rowspan="2" class="top-score">
+                      <img src="Assets/Icon_Good.png" class="top-icon" /><b
+                        >88%</b
+                      >
+                    </td>
+                    <td class="top-movie"><b>Ralph Breaks The Internet</b></td>
+                  </tr>
+                  <tr>
+                    <td class="top-total">$10 Million</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+  
+          <tr>
+            <td height="33%">
+              <table id="table-top">
+                <thead>
+                  <tr>
+                    <th colspan=" 3" class="top-title">Opening this Week</th>
+                    <th class="top-detail">View All</th>
+                  </tr>
+                </thead>
+  
+                <tbody>
+                  <tr>
+                    <td rowspan="2" class="top-score">
+                      <img src="Assets/Icon_Bad.png" class="top-icon" /><b>36%</b>
+                    </td>
+                    <td class="top-movie"><b>Glass</b></td>
+                  </tr>
+                  <tr>
+                    <td class="top-total">$56.8 Million</td>
+                  </tr>
+  
+                  <tr>
+                    <td rowspan="2" class="top-score">
+                      <img src="Assets/Icon_Good.png" class="top-icon" /><b
+                        >80%</b
+                      >
+                    </td>
+                    <td class="top-movie"><b>Dragon Ball Super: Broly</b></td>
+                  </tr>
+                  <tr>
+                    <td class="top-total">$2.1 Million</td>
+                  </tr>
+  
+                  <tr>
+                    <td rowspan="2" class="top-score">
+                      <img src="Assets/Icon_Good.png" class="top-icon" /><b
+                        >71%</b
+                      >
+                    </td>
+                    <td class="top-movie"><b>Adult Life Skills</b></td>
+                  </tr>
+                  <tr>
+                    <td class="top-total">$9 Million</td>
+                  </tr>
+  
+                  <tr>
+                    <td rowspan="2" class="top-score">
+                      <img src="Assets/Icon_Certified.png" class="top-icon" /><b
+                        >91%</b
+                      >
+                    </td>
+                    <td class="top-movie"><b>Don't Come Back From The Moon</b></td>
+                  </tr>
+                  <tr>
+                    <td class="top-total">$8.2 Million</td>
+                  </tr>
+  
+                  <tr>
+                    <td rowspan="2" class="top-score">
+                      <img src="Assets/Icon_Bad.png" class="top-icon" /><b
+                        >10%</b
+                      >
+                    </td>
+                    <td class="top-movie"><b>Replica</b></td>
+                  </tr>
+                  <tr>
+                    <td class="top-total">$29.8 Million</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+  
+          <tr>
+            <td>
+              <table id="table-top">
+                <thead>
+                  <tr>
+                    <th colspan=" 3" class="top-title">Coming Soon</th>
+                    <th class="top-detail">View All</th>
+                  </tr>
+                </thead>
+  
+                <tbody>
+                  <tr>
+                    <td rowspan="2" class="top-score">
+                      <img src="" class="top-icon"alternate=""/><b>TBA</b>
+                    </td>
+                    <td class="top-movie"><b>The Lego Movie 2</b></td>
+                  </tr>
+                  <tr>
+                    <td class="top-total">$8.5 Million</td>
+                  </tr>
+  
+                  <tr>
+                    <td rowspan="2" class="top-score">
+                      <img src="" class="top-icon"alternate=""/><b>TBA</b>
+                    </td>
+                    <td class="top-movie"><b>Alita: Battle Angel</b></td>
+                  </tr>
+                  <tr>
+                    <td class="top-total">$40.6 Million</td>
+                  </tr>
+  
+                  <tr>
+                    <td rowspan="2" class="top-score">
+                      <img src="" class="top-icon"alternate=""/><b>TBA</b>
+                    </td>
+                    <td class="top-movie"><b>Captain Marvel</b></td>
+                  </tr>
+                  <tr>
+                    <td class="top-total">$123.5 Million</td>
+                  </tr>
+  
+                  <tr>
+                    <td rowspan="2" class="top-score">
+                      <img src="" class="top-icon"alternate=""/><b>TBA</b>
+                    </td>
+                    <td class="top-movie"><b>Shazam!</b></td>
+                  </tr>
+                  <tr>
+                    <td class="top-total">$87.5 Million</td>
+                  </tr>
+  
+                  <tr>
+                    <td rowspan="2" class="top-score">
+                      <img src="" class="top-icon"alternate=""/><b>TBA</b>
+                    </td>
+                    <td class="top-movie"><b>Incredibles 2</b></td>
+                  </tr>
+                  <tr>
+                    <td class="top-total">$12.6 Million</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </table>
+  
+        
+      </div>
+      
+      <div id="certified-content">
+              <div id="certified-title">Certified Fresh Picks <span id="certified-view-all">View All</span> </div>
+                  
+              <div id = "certified-meaning">
+                <div id="certified-image"></div>
+                <div id = "certified-desc">
+                  Movies and TV shows are Certified Fresh with a steady Tomatometer of
+                  75% or higher after a set amount of reviews (80 or wide-release
+                  movies, 40 for limited-release movies, 20 for TV shows), including 5
+                  reviews from Top Critics
+                </div>
+              </div>
+      
+              <div id = "certified-list">
+                  <div class = "certified-movie">
+                      <div class = "movie-location">In Theathers</div>
+                      <div id = "movie-image-1"></div>
+                      <div class = "movie-rating"><img src="Assets/Icon_Certified.png" class="top-icon" />100%</div>
+                      <div class = "movie-name">Paddington 2</div>
+                  </div>
+                
+                  <div class = "certified-movie">
+                      <div class = "movie-location">On DVD / Streaming</div>
+                      <div id = "movie-image-2"></div>
+                      <div class = "movie-rating"><img src="Assets/Icon_Certified.png" class="top-icon" />100%</div>
+                      <div class = "movie-name">Leave No Trace</div>
+                  </div>
+      
+                  <div class = "certified-movie">
+                      <div class = "movie-location">In Theathers</div>
+                      <div id = "movie-image-3"></div>
+                      <div class = "movie-rating"><img src="Assets/Icon_Certified.png" class="top-icon" />99%</div>
+                      <div class = "movie-name">Eighth Grade</div>
+                  </div>
+                          
+                  <div class = "certified-movie">
+                      <div class = "movie-location">On TV</div>
+                      <div id = "movie-image-4"></div>
+                      <div class = "movie-rating"> <img src="Assets/Icon_Good.png" class="top-icon" />92%</div>
+                      <div class = "movie-name">Searching</div>
+                  </div>
+              </div>
+            </div>
+  
+      <div id = "email-content">
+  
+        <div id = "email-box">
+          <div id = "email-desc"> Enter email to receive updates </div>
+          <input type = "email" id = "email-textbox" placeholder="Your Email Address"> 
+          <input type="button" value = "Send" id = "email-button">
+        </div>
+        
+        <img src="Assets/Email-Image.png" id = "email-image">
+  
+      </div>
+  
+      <!-- Footer Section -->
+      <div id="footer">
+        <div class="footer-content">
+          <ul>
+            <li>Help</li>
+            <li>About Rotton Tomatoes</li>
+            <li>What's the Tomatometer?</li>
+            <li>Feedback</li>
+          </ul>
+        </div>
+  
+        <div class="footer-content">
+          <ul>
+            <li>Critic Submission</li>
+            <li>Licensing</li>
+            <li>Advertising</li>
+            <li>Careers</li>
+          </ul>
+        </div>
+  
+        <div class="footer-content">
+          <h2>Join the Newsletter!</h2>
+          <p>
+            Get the freshest reviews, news and more delivered right to your inbox!
+          </p>
+          <p> <i class="fas fa-envelope"></i></p>
+        </div>
+  
+        <div class="footer-content">
+          <h2>Follow Us</h2>
+          <p>
+            <i class="fab fa-facebook-f"></i> 
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-snapchat-ghost"></i> 
+            <i class="fab fa-youtube"></i>
+          </p>
+        </div>
+  
+        <div class="footer-copyright">
+            <span class = "footer-text">© 2019, TO16-2. All rights reserved.</span>
+        </div>
+  
+      </div>
+  
+      <script>
+          function load(){
+              window.location.href = "index.html#header-image-1";
+          }
+
+          require('./renderer.js')
+      </script>
+  </body>
+</html>
